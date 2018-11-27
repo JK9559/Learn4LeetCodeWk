@@ -5,6 +5,7 @@ import java.util.*;
 /**
  * @author kangwei
  * @date 2018/11/27
+ * https://leetcode.com/problems/3sum
  */
 public class Problem010 {
 
