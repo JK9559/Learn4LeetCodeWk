@@ -1,6 +1,5 @@
 package wkang.learn;
 
-import wkang.learn.ListNode;
 
 /**
  * @author kangwei
