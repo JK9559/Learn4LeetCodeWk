@@ -8,6 +8,7 @@ import wkang.learn.ListNode;
  * https://leetcode.com/problems/remove-nth-node-from-end-of-list/
  * 维护两个指针 第一个指向第一个节点，第二个指向从头数第n个节点，当第二个指针指向最后一个数据时
  * 删除第一个指针指向的节点。
+ * 注意：删除头节点 {1},1 这类Case
  */
 public class Problem013 {
 
