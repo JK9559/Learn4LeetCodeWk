@@ -1,19 +1,10 @@
 package wkang.learn;
 
-import java.lang.reflect.Array;
 
 /*
 * https://leetcode.com/problems/add-two-numbers/description/
 * */
 public class Problem002 {
-    class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode ret = new ListNode(0);

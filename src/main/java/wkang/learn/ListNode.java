@@ -11,7 +11,15 @@ public class ListNode {
         this.val = val;
     }
 
-    public static ListNode insert(ListNode head, int ele) {
+    public static ListNode transfer(int[] num) {
+        ListNode head = null;
+        for (int i = 0; i < num.length; i++) {
+            head = insert(head, num[i]);
+        }
+        return head;
+    }
+
+    static ListNode insert(ListNode head, int ele) {
         ListNode cur = new ListNode(ele);
 
         ListNode tmp = head;
@@ -39,11 +47,8 @@ public class ListNode {
     }
 
     public static void main(String[] args) {
-        int[] num = {1};
-        ListNode head = null;
-        for (int i = 0; i < num.length; i++) {
-            head = insert(head, num[i]);
-        }
+        int[] num = {1, 2, 3};
+        ListNode head = transfer(num);
         display(head);
     }
 }
