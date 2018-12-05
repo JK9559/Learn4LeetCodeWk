@@ -37,6 +37,6 @@ public class Problem012 {
     public static void main(String[] args) {
         String dig = "";
         List<String> res = letterCombinations(dig);
-        System.out.println(Arrays.asList(res));
+        System.out.println(res);
     }
 }

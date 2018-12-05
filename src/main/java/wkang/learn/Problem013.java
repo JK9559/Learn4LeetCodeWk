@@ -42,13 +42,8 @@ public class Problem013 {
             head = ListNode.insert(head, num[i]);
         }
 
-        ListNode cur;
         ListNode h = removeNthFromEnd(head, 2);
 
-        cur = h;
-        while (cur != null) {
-            System.out.println(cur.val);
-            cur = cur.next;
-        }
+        ListNode.display(h);
     }
 }
