@@ -6,4 +6,5 @@ package wkang.learn;
  * ²âÊÔÖĞÎÄ
  */
 public class Problem018 {
+    
 }
