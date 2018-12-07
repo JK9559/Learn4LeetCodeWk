@@ -4,10 +4,12 @@ package wkang.learn;
  * @author kangwei
  * @date 2018/12/5
  * https://leetcode.com/problems/merge-k-sorted-lists
- * 最小堆
+ * min heap
  */
 public class Problem017 {
-
+    /**
+     * 使用最小堆实现
+     */
     int maxLen = 16;
     int lastIndex = 0;
     int[] heapArray = new int[maxLen];
