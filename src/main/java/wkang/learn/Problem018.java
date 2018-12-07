@@ -3,8 +3,7 @@ package wkang.learn;
 /**
  * @author kangwei
  * @date 2018/12/7
- * ²âÊÔÖĞÎÄbibi
+ * å•Šå“ˆ
  */
 public class Problem018 {
-    
 }
