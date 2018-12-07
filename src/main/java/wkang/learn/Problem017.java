@@ -4,7 +4,7 @@ package wkang.learn;
  * @author kangwei
  * @date 2018/12/5
  * https://leetcode.com/problems/merge-k-sorted-lists
- * 最小堆实现
+ * 最小堆
  */
 public class Problem017 {
 

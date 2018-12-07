@@ -1,8 +1,8 @@
 package wkang.learn;
 
 /*
-* https://leetcode.com/problems/median-of-two-sorted-arrays
-* */
+ * https://leetcode.com/problems/median-of-two-sorted-arrays
+ * */
 
 public class Problem004 {
 
@@ -25,9 +25,15 @@ public class Problem004 {
      * */
 
     static int findKth(int[] nums1, int i, int[] nums2, int j, int K) {
-        if (i >= nums1.length) return nums2[j + K - 1];
-        if (j >= nums2.length) return nums1[i + K - 1];
-        if (1 == K) return Math.min(nums1[i], nums2[j]);
+        if (i >= nums1.length) {
+            return nums2[j + K - 1];
+        }
+        if (j >= nums2.length) {
+            return nums1[i + K - 1];
+        }
+        if (1 == K) {
+            return Math.min(nums1[i], nums2[j]);
+        }
         int rst1 = (i + K / 2 - 1 < nums1.length) ? nums1[i + K / 2 - 1] : Integer.MAX_VALUE;
         int rst2 = (j + K / 2 - 1 < nums2.length) ? nums2[j + K / 2 - 1] : Integer.MAX_VALUE;
         if (rst1 < rst2) {
@@ -38,9 +44,9 @@ public class Problem004 {
     }
 
     public static void main(String[] args) {
-        int[] a = {1,2,3};
-        int[] b = {4,5,6};
-        double c = findMedianSortedArrays(a,b);
+        int[] a = {1, 2, 3};
+        int[] b = {4, 5, 6};
+        double c = findMedianSortedArrays(a, b);
         System.out.println(c);
 
     }
