@@ -67,8 +67,9 @@ public class Problem005 {
         for (int i = 1; i < lent -1; i++) {
             //System.out.println(i + ":" + mx + ":" + id);
             p[i] = (mx > i) ? Math.min(p[2 * id - i], mx - i) : 1;
-            while (t.charAt(i - p[i]) == t.charAt(i + p[i]))
+            while (t.charAt(i - p[i]) == t.charAt(i + p[i])) {
                 ++p[i];
+            }
             if (mx < i + p[i]) {
                 mx = i + p[i];
                 id = i;
