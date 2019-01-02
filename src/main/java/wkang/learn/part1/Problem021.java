@@ -1,4 +1,4 @@
-package wkang.learn;
+package wkang.learn.part1;
 
 import java.util.Arrays;
 

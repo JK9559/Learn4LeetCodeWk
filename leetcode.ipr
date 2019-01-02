@@ -14,23 +14,23 @@
     </bytecodeTargetLevel>
   </component>
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem001.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem002.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem004.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem005.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem007.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem009.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem010.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem011.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem012.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem013.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem015.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem016.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem017.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/Problem018.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/StringSortLSD.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/StringSortMSD.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/StringSortQuick3String.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem001.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem002.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem004.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem005.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem007.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem009.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem010.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem011.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem012.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem013.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem015.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem016.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem017.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/wkang/learn/part0/Problem018.java" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
   <component name="InspectionProjectProfileManager">

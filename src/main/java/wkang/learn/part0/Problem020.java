@@ -1,4 +1,4 @@
-package wkang.learn;
+package wkang.learn.part0;
 
 /**
  * @author kangwei
