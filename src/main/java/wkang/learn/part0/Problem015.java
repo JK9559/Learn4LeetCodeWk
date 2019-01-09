@@ -1,56 +1,111 @@
 package wkang.learn.part0;
 
-import wkang.learn.ListNode;
+import java.util.*;
 
 /**
  * @author kangwei
- * @date 2018/12/4
- * https://leetcode.com/problems/merge-two-sorted-lists/
- * 合并链表 当其中一个链表已经遍历到尾节点时，只需要将另一个链表的指都放在结果里
- * 用原有链表还是使用新链表
+ * @date 2018/11/27
+ * https://leetcode.com/problems/3sum
  */
 public class Problem015 {
-    public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        // 1. 创建一个新链表
-        // 2. 定义两个指针分别指向两个链表的头结点
-        // 3. 如果链表一个为空了，则跳出循环
-        // 4. 循环内 取指针指向的节点的val，比较大小，取小值放入新链表，并且把指针后移
-        // 5. 跳出循环 判断不为空的链表，遍历插入新链表，返回
-        ListNode pl1 = l1, pl2 = l2, h = null, htail = null;
-        if (null == pl1 || null == pl2) {
-            h = null == pl1 ? pl2 : pl1;
-            return h;
-        }
 
-        while (null != pl1 && null != pl2) {
-            int val = pl1.val <= pl2.val ? pl1.val : pl2.val;
-            if (null == h) {
-                h = new ListNode(val);
-                h.next = null;
-                htail = h;
-            } else {
-                ListNode tmp = new ListNode(val);
-                htail.next = tmp;
-                tmp.next = null;
-                htail = tmp;
-            }
-            if (pl1.val <= pl2.val) {
-                pl1 = pl1.next;
-            } else {
-                pl2 = pl2.next;
-            }
+    /**
+     * @param nums
+     * @return
+     */
+    public static List<List<Integer>> threeSum1(int[] nums) {
+        Set<List<Integer>> res = new HashSet<List<Integer>>();
+        Arrays.sort(nums);
+        int maxLen = nums.length, i = 0, befTarget = Integer.MAX_VALUE;
+        int j, k;
+        if (nums.length <= 0 || nums[0] > 0 || nums[maxLen - 1] < 0) {
+            return new ArrayList<List<Integer>>(res);
         }
-        htail.next = null == pl1 ? pl2 : pl1;
-        return h;
+        while (i <= maxLen - 2) {
+            int target = 0 - nums[i];
+            if (nums[i] > 0) {
+                break;
+            }
+            if (i > 0 && befTarget == target) {
+                i++;
+                continue;
+            }
+            j = i + 1;
+            k = maxLen - 1;
+            while (j < k) {
+                befTarget = target;
+                if (nums[j] + nums[k] < target) {
+                    j++;
+                } else if (nums[j] + nums[k] > target) {
+                    k--;
+                } else if (nums[j] + nums[k] == target) {
+                    List<Integer> tmp = new ArrayList<Integer>();
+                    tmp.add(nums[i]);
+                    tmp.add(nums[j]);
+                    tmp.add(nums[k]);
+                    res.add(tmp);
+                    j++;
+                    k--;
+                }
+            }
+            i++;
+        }
+        return new ArrayList<List<Integer>>(res);
+    }
+
+    /**
+     * @param nums
+     * @return
+     * 首先将数组排序，先确定一个值nums[i]，从该值之后的数组中查找两个值，使三个数字之和为0
+     * 查找方式为设置两个指针从左往右，从右往左进行查找。如果和小于0，将左指针右移，大于零，将右指针向左移
+     * 等于零时，存储，并且分别向左向右移动指针。
+     * 优化：有重复的值，直接跳过，不做重复计算
+     */
+    public static List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        int i = 0, noNeedLen = 2;
+        Arrays.sort(nums);
+        while (i < nums.length - noNeedLen) {
+            int j = i + 1, k = nums.length - 1;
+            if (nums[i] > 0) {
+                break;
+            }
+            while (j < k) {
+                if (0 == nums[i] + nums[j] + nums[k]) {
+                    res.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    j++;
+                    while (j < k && nums[j] == nums[j - 1]) {
+                        j++;
+                    }
+                    k--;
+                    while (j < k && nums[k] == nums[k + 1]) {
+                        k--;
+                    }
+
+                } else if (nums[i] + nums[j] + nums[k] > 0) {
+                    k--;
+                } else {
+                    j++;
+                }
+            }
+            i++;
+            while (i < nums.length - noNeedLen && nums[i] == nums[i - 1]) {
+                i++;
+            }
+
+        }
+        return res;
     }
 
     public static void main(String[] args) {
-        int[] num1 = {};
-        int[] num2 = {};
-        ListNode head1 = ListNode.transfer(num1);
-        ListNode.display(head1);
-        ListNode head2 = ListNode.transfer(num2);
-        ListNode.display(head2);
-        ListNode.display(mergeTwoLists(head1, head2));
+        int[] abc = {-2, 0, 0, 2, 2};
+        List<List<Integer>> res = threeSum(abc);
+        for (int i = 0; i < res.size(); i++) {
+            for (int j = 0; j < res.get(i).size(); j++) {
+                System.out.print(res.get(i).get(j) + ",");
+            }
+            System.out.println();
+        }
     }
+
 }

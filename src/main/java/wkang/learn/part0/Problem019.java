@@ -5,48 +5,47 @@ import wkang.learn.ListNode;
 
 /**
  * @author kangwei
- * @date 2018/12/7
- * https://leetcode.com/problems/reverse-nodes-in-k-group/
- * reverseListNode 浠巔re鐨勪笅涓�涓捣锛屾斁鍒皃re涔嬪悗锛岃繑鍥炵殑ListNode鏄綋鍓嶆帓搴忕粍鐨勬渶鍚庝竴涓妭鐐癸紝鏄笅涓�缁勭殑pre鑺傜偣
+ * @date 2018/11/30
+ * https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+ * 维护两个指针 第一个指向第一个节点，第二个指向从头数第n个节点，当第二个指针指向最后一个数据时
+ * 删除第一个指针指向的节点。
+ * 注意：删除头节点 {1},1 这类Case
  */
 public class Problem019 {
-    public ListNode reverseKGroup(ListNode head, int k) {
-        if (null == head || null == head.next || 1 == k) {
-            return head;
-        }
-        ListNode dummy = new ListNode(-1);
-        ListNode pre = dummy, cur = head;
-        dummy.next = head;
-        int i = 0;
-        while (null != cur) {
-            ++i;
-            if (i % k == 0) {
-                pre = reverseListNode(pre, cur.next);
-                cur = pre.next;
-            } else {
-                cur = cur.next;
-            }
-        }
-        return dummy.next;
 
-    }
-
-    public static ListNode reverseListNode(ListNode pre, ListNode next) {
-        ListNode last = pre.next;
-        ListNode cur = last.next;
-        while (cur != next) {
-            last.next = cur.next;
-            cur.next = pre.next;
-            pre.next = cur;
-            cur = last.next;
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode l, r, tmp = null, htmp;
+        l = r = head;
+        int i = 1;
+        while (null != r.next && i < n) {
+            r = r.next;
+            i++;
         }
-        return last;
+        while (null != r.next) {
+            tmp = l;
+            r = r.next;
+            l = l.next;
+        }
+        if (null != tmp) {
+            tmp.next = l.next;
+            l.next = null;
+        } else {
+            htmp = head;
+            head = head.next;
+            htmp.next = null;
+        }
+        return head;
     }
 
     public static void main(String[] args) {
-        int[] num = {1, 2, 3, 4};
-        Problem019 p = new Problem019();
-        //ListNode.display(swapPairs(ListNode.transfer(num)));
-        ListNode.display(p.reverseKGroup(ListNode.transfer(num), 2));
+        int[] num = {1, 2, 3, 4, 5};
+        ListNode head = null;
+        for (int i = 0; i < num.length; i++) {
+            head = ListNode.insert(head, num[i]);
+        }
+
+        ListNode h = removeNthFromEnd(head, 2);
+
+        ListNode.display(h);
     }
 }

@@ -8,7 +8,7 @@ import wkang.learn.ListNode;
  * https://leetcode.com/problems/swap-nodes-in-pairs/
  * 两两交换 换过的不再交换
  */
-public class Problem018 {
+public class Problem024 {
 
     public ListNode swapPairs(ListNode head) {
         ListNode pleft, pright, preleft;
@@ -37,7 +37,7 @@ public class Problem018 {
 
     public static void main(String[] args) {
         int[] lst = {1, 2, 3};
-        Problem018 p8 = new Problem018();
+        Problem024 p8 = new Problem024();
         ListNode.display(p8.swapPairs(ListNode.transfer(lst)));
     }
 }

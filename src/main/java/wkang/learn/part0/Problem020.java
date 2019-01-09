@@ -1,41 +1,39 @@
 package wkang.learn.part0;
 
+import java.util.LinkedList;
+
 /**
  * @author kangwei
- * @date 2018/12/28
- * https://leetcode.com/problems/valid-sudoku/
- * 验证当前数独是否合法，比较每个有值位置在当前行 当前列 当前宫是否填入过
+ * @date 2018/12/4
+ * https://leetcode.com/problems/valid-parentheses/
+ * 栈 注意判断边界值 "[" "]" ""
  */
 public class Problem020 {
 
-    public static boolean isValidSudoku(char[][] board) {
-
-        if (board.length == 0 || board[0].length == 0) {
-            return false;
-        }
-        boolean[][] row = new boolean[9][9];
-        boolean[][] col = new boolean[9][9];
-        boolean[][] sub = new boolean[9][9];
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if ('.' != board[i][j]) {
-                    int num = board[i][j] - '1';
-                    if (row[i][num] || col[num][j] || sub[(i / 3) * 3 + j / 3][num]) {
-                        return false;
-                    }
-                    row[i][num] = true;
-                    col[num][j] = true;
-                    sub[(i / 3) * 3 + j / 3][num] = true;
+    public static boolean isValid(String s) {
+        LinkedList<Character> stack = new LinkedList<Character>();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(' || s.charAt(i) == '{' || s.charAt(i) == '[') {
+                stack.add(s.charAt(i));
+            } else if (s.charAt(i) == ')' || s.charAt(i) == '}' || s.charAt(i) == ']') {
+                if (0 == stack.size()) {
+                    return false;
+                }
+                char reChar = stack.remove(stack.size() - 1);
+                if (s.charAt(i) == ')' && reChar != '(') {
+                    return false;
+                }else if (s.charAt(i) == '}' && reChar != '{') {
+                    return false;
+                }else if (s.charAt(i) == ']' && reChar != '[') {
+                    return false;
                 }
             }
-
         }
-        return true;
+        return 0 == stack.size();
     }
 
 
     public static void main(String[] args) {
-        //isValidSudoku();
+        System.out.println(isValid("[]"));
     }
-
 }

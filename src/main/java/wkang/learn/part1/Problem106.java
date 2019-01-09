@@ -12,7 +12,7 @@ import java.util.HashMap;
  * 中序遍历 左->根->右
  * 后序遍历 左->右->根
  */
-public class Problem022 {
+public class Problem106 {
     public static TreeNode buildTree(int[] inorder, int[] postorder) {
         if (null == inorder || null == postorder || inorder.length == 0 || postorder.length == 0) {
             return null;

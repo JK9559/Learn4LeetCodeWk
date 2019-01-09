@@ -1,39 +1,33 @@
 package wkang.learn.part0;
 
-import java.util.LinkedList;
+/*
+* https://leetcode.com/problems/longest-common-prefix
+* */
 
-/**
- * @author kangwei
- * @date 2018/12/4
- * https://leetcode.com/problems/valid-parentheses/
- * æ ˆ æ³¨æ„åˆ¤æ–­è¾¹ç•Œå€¼ "[" "]" ""
- */
+import java.util.Arrays;
+
 public class Problem014 {
-
-    public static boolean isValid(String s) {
-        LinkedList<Character> stack = new LinkedList<Character>();
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(' || s.charAt(i) == '{' || s.charAt(i) == '[') {
-                stack.add(s.charAt(i));
-            } else if (s.charAt(i) == ')' || s.charAt(i) == '}' || s.charAt(i) == ']') {
-                if (0 == stack.size()) {
-                    return false;
-                }
-                char reChar = stack.remove(stack.size() - 1);
-                if (s.charAt(i) == ')' && reChar != '(') {
-                    return false;
-                }else if (s.charAt(i) == '}' && reChar != '{') {
-                    return false;
-                }else if (s.charAt(i) == ']' && reChar != '[') {
-                    return false;
-                }
-            }
+    // Çó¸ø¶¨×Ö·ûÊı×éËùÓĞ×Ö·û´®µÄ×î³¤¹«¹²Ç°×º
+    public static String longestCommonPrefix(String[] strs) {
+        // Èô¸ø¶¨×Ö·û´®Êı×éÎª¿Õ ·µ»Ø¿Õ
+        if (strs == null || strs.length == 0) {
+            return "";
         }
-        return 0 == stack.size();
+        // ¶Ô×Ö·û´®Êı×é½øĞĞÅÅĞò ÕâÑùµÄ»° ÅÅ×îÇ°ºÍÅÅ×îºóµÄ²îÒì¾Í×î´ó£¬Ö»ĞèÒª·ÖÎöÕâÁ½¸ö×Ö·û´®¾Í¿ÉÒÔ
+        Arrays.sort(strs);
+        // È¡Á½¸ö×Ö·û´®³¤¶È×îĞ¡µÄ×ö±È½Ï·¶Î§
+        int i = 0, lens = Math.min(strs[0].length(), strs[strs.length - 1].length());
+        while (i < lens && strs[0].charAt(i) == strs[strs.length - 1].charAt(i)) {
+            i++;
+        }
+        // µÃ³ö×î³¤¹«¹²Ç°×º
+        return strs[0].substring(0, i);
     }
 
-
     public static void main(String[] args) {
-        System.out.println(isValid("[]"));
+        String[] str={"flower","flow","flight"};
+
+        System.out.println(longestCommonPrefix(str));
+
     }
 }

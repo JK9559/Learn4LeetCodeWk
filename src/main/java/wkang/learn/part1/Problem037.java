@@ -1,7 +1,5 @@
 package wkang.learn.part1;
 
-import java.util.Arrays;
-
 /**
  * @author kangwei
  * @date 2018/12/29
@@ -11,7 +9,7 @@ import java.util.Arrays;
  * 如果列数下标到了MAX_VAL 说明这列填完了，返回下一行的下标0元素
  * 如果要填的数是空，则依次从1开始尝试填入数字验证可以填之后填下一个数字，如果验证不通过，则还原为空
  */
-public class Problem021 {
+public class Problem037 {
 
     private static final int MAX_VAL = 9;
     private static final int MAX_SUB = 3;
@@ -85,7 +83,7 @@ public class Problem021 {
                 {'.', '.', '1', '.', '.', '.', '.', '6', '8'},
                 {'.', '.', '8', '5', '.', '.', '.', '1', '.'},
                 {'.', '9', '.', '.', '.', '.', '4', '.', '.'}};
-        Problem021 pro = new Problem021();
+        Problem037 pro = new Problem037();
         long startTime = System.currentTimeMillis();
         pro.solveSudoku(abc);
         long endTime = System.currentTimeMillis();

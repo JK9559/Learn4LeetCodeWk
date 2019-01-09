@@ -1,111 +1,53 @@
 package wkang.learn.part0;
 
-import java.util.*;
+/*
+* https://leetcode.com/problems/regular-expression-matching
+* */
 
-/**
- * @author kangwei
- * @date 2018/11/27
- * https://leetcode.com/problems/3sum
- */
 public class Problem010 {
-
-    /**
-     * @param nums
-     * @return
-     */
-    public static List<List<Integer>> threeSum1(int[] nums) {
-        Set<List<Integer>> res = new HashSet<List<Integer>>();
-        Arrays.sort(nums);
-        int maxLen = nums.length, i = 0, befTarget = Integer.MAX_VALUE;
-        int j, k;
-        if (nums.length <= 0 || nums[0] > 0 || nums[maxLen - 1] < 0) {
-            return new ArrayList<List<Integer>>(res);
+    public static boolean isMatch(String s, String p) {
+        // 保存字符串s和p的长度
+        int lens = s.length(), lenp = p.length();
+        // 申请一个二维数组 保存的值包含 当s和p为空时的信息，所以 行列都比长度多1
+        // 意义也有所不同 对于dp数组 dp[i][j] 为从s和p的头开始 长度分别为i和j的 长度匹配情况
+        // 也就是s[0,...,i-1] 和 p[0,...,j-1] 的匹配情况
+        boolean[][] dp = new boolean[lens + 1][lenp + 1];
+        // 当s和p分别为两个空串时 匹配 初始化为true
+        dp[0][0] = true;
+        // 当s不为空 p为空时 必然不匹配 初始化为false
+        for (int i = 1; i < lens + 1; i++) {
+            dp[i][0] = false;
         }
-        while (i <= maxLen - 2) {
-            int target = 0 - nums[i];
-            if (nums[i] > 0) {
-                break;
-            }
-            if (i > 0 && befTarget == target) {
-                i++;
-                continue;
-            }
-            j = i + 1;
-            k = maxLen - 1;
-            while (j < k) {
-                befTarget = target;
-                if (nums[j] + nums[k] < target) {
-                    j++;
-                } else if (nums[j] + nums[k] > target) {
-                    k--;
-                } else if (nums[j] + nums[k] == target) {
-                    List<Integer> tmp = new ArrayList<Integer>();
-                    tmp.add(nums[i]);
-                    tmp.add(nums[j]);
-                    tmp.add(nums[k]);
-                    res.add(tmp);
-                    j++;
-                    k--;
-                }
-            }
-            i++;
+        // 当s为空 p不为空时 如果p当前的末尾字符(p[j-1])为'*'时，其值可等同于将当前p串的长度减少2位时和s当前(空串)的匹配值
+        for (int j = 1; j < lenp + 1; j++) {
+            dp[0][j] = (dp[0][j - 2] && '*' == p.charAt(j - 1) && j >= 2);
         }
-        return new ArrayList<List<Integer>>(res);
-    }
-
-    /**
-     * @param nums
-     * @return
-     * 首先将数组排序，先确定一个值nums[i]，从该值之后的数组中查找两个值，使三个数字之和为0
-     * 查找方式为设置两个指针从左往右，从右往左进行查找。如果和小于0，将左指针右移，大于零，将右指针向左移
-     * 等于零时，存储，并且分别向左向右移动指针。
-     * 优化：有重复的值，直接跳过，不做重复计算
-     */
-    public static List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        int i = 0, noNeedLen = 2;
-        Arrays.sort(nums);
-        while (i < nums.length - noNeedLen) {
-            int j = i + 1, k = nums.length - 1;
-            if (nums[i] > 0) {
-                break;
-            }
-            while (j < k) {
-                if (0 == nums[i] + nums[j] + nums[k]) {
-                    res.add(Arrays.asList(nums[i], nums[j], nums[k]));
-                    j++;
-                    while (j < k && nums[j] == nums[j - 1]) {
-                        j++;
-                    }
-                    k--;
-                    while (j < k && nums[k] == nums[k + 1]) {
-                        k--;
-                    }
-
-                } else if (nums[i] + nums[j] + nums[k] > 0) {
-                    k--;
+        // 计算dp[i][j]
+        for (int i = 1; i < lens + 1; i++) {
+            for (int j = 1; j < lenp + 1; j++) {
+                // 分为两类
+                // 1是 当p的当前最后一位不是'*'时，结果是取s和p的前i-1长度和j-1长度结果，再对比s和p的第i-1和j-1位
+                // 是否满足 相同 或者 p的j-1位是'.'
+                // 2是 当p的当前最后一位是'*'时，因为*可以匹配0次，和多于0次
+                // 当匹配0次时 dp[i][j] 应该是 长度为i的s和长度为j-2的匹配结果
+                // 当匹配多于0次时 dp[i][j] 查看p的'*'前一个字符 是否与s的最后一个字符相同或者p的'*'前一位为'.'任意匹配
+                // 当满足上述条件时 取决于s[0,...,i-2]长度为i-1 和p[0,...,j-1]长度为j 是否匹配 如果匹配了 那么'*'至少匹配了1次
+                if ('*' != p.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1] && (s.charAt(i - 1) == p.charAt(j - 1) || '.' == p.charAt(j - 1));
                 } else {
-                    j++;
+                    dp[i][j] = dp[i][j - 2] ||
+                            (dp[i - 1][j] && (s.charAt(i - 1) == p.charAt(j - 2) || '.' == p.charAt(j - 2)));
                 }
             }
-            i++;
-            while (i < nums.length - noNeedLen && nums[i] == nums[i - 1]) {
-                i++;
-            }
-
         }
-        return res;
+        // 最终取长度为lens的s和长度为lenp的p的结果
+        return dp[lens][lenp];
     }
 
     public static void main(String[] args) {
-        int[] abc = {-2, 0, 0, 2, 2};
-        List<List<Integer>> res = threeSum(abc);
-        for (int i = 0; i < res.size(); i++) {
-            for (int j = 0; j < res.get(i).size(); j++) {
-                System.out.print(res.get(i).get(j) + ",");
-            }
-            System.out.println();
-        }
+        String s = "mississippi";
+        String p = "mis*is*p*.";
+        boolean fl = isMatch(s,p);
+        System.out.println(fl);
     }
-
 }

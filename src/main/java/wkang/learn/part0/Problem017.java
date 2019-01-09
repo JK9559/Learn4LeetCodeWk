@@ -1,105 +1,42 @@
 package wkang.learn.part0;
 
-import wkang.learn.ListNode;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author kangwei
- * @date 2018/12/5
- * https://leetcode.com/problems/merge-k-sorted-lists
- * min heap
+ * @date 2018/11/28
+ * https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+ * 学到的点 判断字符串为空 digits == null || digits.length() <= 0
  */
 public class Problem017 {
-    /**
-     * 使用最小堆实现
-     */
-    int maxLen = 16;
-    int lastIndex = 0;
-    int[] heapArray = new int[maxLen];
-
-    Problem017() {
-        for (int i = 0; i < heapArray.length; i++) {
-            heapArray[i] = Integer.MIN_VALUE;
+    public static List<String> letterCombinations(String digits) {
+        if (digits == null || digits.length() <= 0) {
+            return new ArrayList<String>();
         }
-    }
-
-    public ListNode mergeKLists(ListNode[] lists) {
-        int maxNum = 0;
-        for (int i = 0; i < lists.length; i++) {
-            ListNode plist = lists[i];
-            while (null != plist) {
-                shiftUp(plist.val);
-                plist = plist.next;
-                maxNum++;
+        String[] dict = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        List<String> res = new ArrayList<String>();
+        // 将结果数组初始化为空(保证有值 length不为0)
+        res.add("");
+        for (int i = 0; i < digits.length(); i++) {
+            List<String> tmp = new ArrayList<String>();
+            // 字典里取对应数字的字符串
+            String str = dict[digits.charAt(i) - '0'];
+            // 遍历对应字符串 将每个字符插入到结果res每个字符串之后
+            for (int j = 0; j < str.length(); j++) {
+                for (int k = 0; k < res.size(); k++) {
+                    tmp.add(res.get(k) + str.charAt(j));
+                }
             }
-        }
-        ListNode res = null;
-        ListNode pres = null;
-        for (int i = 0; i < maxNum; i++) {
-            ListNode tmp = new ListNode(popTop());
-            tmp.next = null;
-            if (null == res) {
-                res = tmp;
-                pres = res;
-            } else {
-                pres.next = tmp;
-                pres = pres.next;
-            }
+            res = tmp;
         }
         return res;
     }
 
-    public void shiftUp(int key) {
-        // min top heap
-        if (lastIndex + 1 >= maxLen) {
-            int[] tmpArray = new int[maxLen * 2];
-            for (int i = 0; i < tmpArray.length; i++) {
-                tmpArray[i] = Integer.MIN_VALUE;
-            }
-            System.arraycopy(heapArray, 0, tmpArray, 0, lastIndex + 1);
-            heapArray = tmpArray;
-            maxLen *= 2;
-        }
-        heapArray[++lastIndex] = key;
-        int curIndex = lastIndex;
-        int parent = curIndex / 2;
-        while (heapArray[parent] > heapArray[curIndex]) {
-            int tmp = heapArray[parent];
-            heapArray[parent] = heapArray[curIndex];
-            heapArray[curIndex] = tmp;
-            curIndex = parent;
-            parent = curIndex / 2;
-        }
-    }
-
-    public void shiftDown() {
-        int startIndex = 1;
-        int leftIndex = startIndex * 2;
-        int rightIndex = startIndex * 2 + 1;
-        while (leftIndex <= lastIndex && (heapArray[startIndex] > heapArray[leftIndex] || heapArray[startIndex] > heapArray[rightIndex])) {
-            int tmpIndex = heapArray[leftIndex] < heapArray[rightIndex] ? leftIndex : rightIndex;
-            int tmp = heapArray[tmpIndex];
-            heapArray[tmpIndex] = heapArray[startIndex];
-            heapArray[startIndex] = tmp;
-            startIndex = tmpIndex;
-            leftIndex = startIndex * 2;
-            rightIndex = startIndex * 2 + 1;
-        }
-    }
-
-    public int popTop() {
-        int top = heapArray[1];
-        heapArray[1] = heapArray[lastIndex--];
-        shiftDown();
-        return top;
-    }
-
     public static void main(String[] args) {
-        int[] l1 = {2};
-        int[] l2 = {};
-        int[] l3 = {-1};
-        ListNode.transfer(l1);
-        ListNode[] lists = {ListNode.transfer(l1),ListNode.transfer(l2),ListNode.transfer(l3)};
-        Problem017 p = new Problem017();
-        ListNode.display(p.mergeKLists(lists));
+        String dig = "";
+        List<String> res = letterCombinations(dig);
+        System.out.println(res);
     }
 }
