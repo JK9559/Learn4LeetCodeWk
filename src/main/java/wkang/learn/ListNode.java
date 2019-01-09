@@ -19,7 +19,7 @@ public class ListNode {
         return head;
     }
 
-    static ListNode insert(ListNode head, int ele) {
+    public static ListNode insert(ListNode head, int ele) {
         ListNode cur = new ListNode(ele);
 
         ListNode tmp = head;

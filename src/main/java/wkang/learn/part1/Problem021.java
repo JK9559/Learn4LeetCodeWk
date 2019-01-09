@@ -19,8 +19,11 @@ public class Problem021 {
 
     public void solveSudoku(char[][] board) {
         if (solveSudokuByQ(board, 0, 0)) {
-            for (int i = 0; i < board.length; i++) {
-                System.out.println(Arrays.toString(board[i]));
+            for (int i = 0; i < MAX_VAL; i++) {
+                System.out.println("--------------------------");
+                for (int j = 0; j < MAX_VAL; j++) {
+                    System.out.print(board[i][j]+"|");
+                }
             }
         }
     }
@@ -86,7 +89,7 @@ public class Problem021 {
         long startTime = System.currentTimeMillis();
         pro.solveSudoku(abc);
         long endTime = System.currentTimeMillis();
-        System.out.println(endTime-startTime + "ms");
+        System.out.println(endTime - startTime + "ms");
     }
 
 }
