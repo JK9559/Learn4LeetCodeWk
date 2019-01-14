@@ -5,7 +5,6 @@ import java.util.HashMap;
 /**
  * @author wkang
  * @date 2019/1/2
- * https://blog.csdn.net/linhuanmars/article/details/24390157
  */
 public class TreeNode {
     public int val;
