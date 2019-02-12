@@ -1,10 +1,14 @@
 package wkang.learn.part0;
-/*
-* https://leetcode.com/problems/two-sum/description/
-* */
+
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ * https://leetcode.com/problems/two-sum/description/
+ * 在给定数组中 查找两个数 之和等于给定目标
+ * @date 2019/02/12
+ * @author wkang
+ */
 public class Problem001 {
 
     public int[] twoSum(int[] nums, int target) {

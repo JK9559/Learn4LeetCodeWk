@@ -3,11 +3,19 @@ package wkang.learn.part0;
 
 import wkang.learn.ListNode;
 
-/*
-* https://leetcode.com/problems/add-two-numbers/description/
-* */
+/**
+ * https://leetcode.com/problems/add-two-numbers/description/
+ *
+ * @date 2019/02/12
+ * @author wkang
+ */
 public class Problem002 {
 
+    /**
+     * @param l1 输入数字链表l1
+     * @param l2 输入数字链表l2
+     * @return 返回结果链表ret
+     */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode ret = new ListNode(0);
         ListNode cur = ret;
