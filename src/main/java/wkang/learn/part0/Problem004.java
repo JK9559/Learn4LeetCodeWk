@@ -2,7 +2,7 @@ package wkang.learn.part0;
 
 /**
  * https://leetcode.com/problems/median-of-two-sorted-arrays
- *
+ * 计算给定两个有序数组合并在一起时的中位数
  * @date 2019/02/12
  * @author wkang
  */

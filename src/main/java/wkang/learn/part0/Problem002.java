@@ -5,7 +5,7 @@ import wkang.learn.ListNode;
 
 /**
  * https://leetcode.com/problems/add-two-numbers/description/
- *
+ * 计算两个链表表示的数字之和
  * @date 2019/02/12
  * @author wkang
  */

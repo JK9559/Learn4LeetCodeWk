@@ -1,9 +1,15 @@
 package wkang.learn.part0;
 
 /*
-* https://leetcode.com/problems/longest-palindromic-substring/description/
+*
 * */
 
+/**
+ * https://leetcode.com/problems/longest-palindromic-substring/description/
+ * 找出给定字符串的最长回文子串 -- 马拉车算法
+ * @date 2019/02/12
+ * @author wkang
+ */
 public class Problem005 {
 
 
@@ -54,6 +60,7 @@ public class Problem005 {
     // 2) 如果 mx - i <= p[j] 那么p[i]=mx-i
     //否则为p[i]=1
     //本题中 用 rstR 记录最大半径 rstCenter 记录最大半径对应的加工后字符串的中心位置
+
     public static String longestPalindrome(String s) {
 
         StringBuilder t  = new StringBuilder("$#");

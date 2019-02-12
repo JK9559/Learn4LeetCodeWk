@@ -8,7 +8,7 @@ import java.util.HashSet;
 
 /**
  * https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
- *
+ * 计算一个字符串中 字符不重复子串的最大长度
  * @author wkang
  * @date 2019/02/12
  */
