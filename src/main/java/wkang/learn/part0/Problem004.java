@@ -1,9 +1,11 @@
 package wkang.learn.part0;
 
-/*
+/**
  * https://leetcode.com/problems/median-of-two-sorted-arrays
- * */
-
+ *
+ * @date 2019/02/12
+ * @author wkang
+ */
 public class Problem004 {
 
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
@@ -15,7 +17,7 @@ public class Problem004 {
         return rst;
     }
 
-    /*
+    /**
      * 查找数组nums1和数组nums2分别从i和j下标开始的，第K个数字(1开始计数)。如果当开始下标大于或者等于当前数组的长度
      * 那么直接返回另一个数组的相应位置数字。如果取第一个，则返回两个数组最小的当前头位置的数字。
      * 二分法查找两个数组的第K位数字：
