@@ -1,13 +1,16 @@
 package wkang.learn.part0;
 
-/*
-* https://leetcode.com/problems/longest-common-prefix
-* */
 
 import java.util.Arrays;
 
+/**
+ * https://leetcode.com/problems/longest-common-prefix
+ * 给定一个字符串数组 求出最长的公共前缀
+ * 做法是排序 然后对比第一个和最后一个字符串
+ * @date 2019/02/13
+ * @author wkang
+ */
 public class Problem014 {
-    // 求给定字符数组所有字符串的最长公共前缀
     public static String longestCommonPrefix(String[] strs) {
         // 若给定字符串数组为空 返回空
         if (strs == null || strs.length == 0) {

@@ -1,9 +1,14 @@
 package wkang.learn.part0;
 
-/*
-* https://leetcode.com/problems/regular-expression-matching
-* */
 
+/**
+ * https://leetcode.com/problems/regular-expression-matching
+ * 给定一个模式串 一个字符串 返回字符串是否匹配模式串
+ * 使用dp算法 动态规划
+ * 重点就是dp数组的设置：dp[i][j]表示了长度为i的s串和长度为j的p是否匹配，以及已知初始化的信息的赋值
+ * @author wkang
+ * @date 2019/02/12
+ */
 public class Problem010 {
     public static boolean isMatch(String s, String p) {
         // 保存字符串s和p的长度
@@ -47,7 +52,7 @@ public class Problem010 {
     public static void main(String[] args) {
         String s = "mississippi";
         String p = "mis*is*p*.";
-        boolean fl = isMatch(s,p);
+        boolean fl = isMatch(s, p);
         System.out.println(fl);
     }
 }
